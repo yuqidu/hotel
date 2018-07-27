@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mapper.KindsMapper">
+	<resultMap type="Kinds" id="kindsResultMap">
+		<id column="id" property="id"/>
+		<result column="nums" property="nums"/>
+		<result column="name" property="name"/>
+		<result column="price" property="price"/>
+	</resultMap>
+	<select id="selectOne" parameterType="Integer" resultType="Kinds">
+		select * from kinds where id=#{0}
+	</select>
+	<select id="select" resultMap="kindsResultMap">
+		select * from kinds
+	</select>
+	<insert id="insert" parameterType="Kinds">
+		insert into kinds(nums,name,price) values(#{nums},#{name},#{price})
+	</insert>
+	<delete id="delete" parameterType="Integer">
+		delete from kinds where id=#{0}
+	</delete>
+	<update id="update" parameterType="Kinds">
+		update kinds set nums=#{nums},name=#{name},price=#{price} where id=#{id}
+	</update>
+</mapper>

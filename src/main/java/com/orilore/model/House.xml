@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mapper.HouseMapper">
+	<resultMap type="House" id="houseResultMap">
+		<id column="id" property="id"/>
+		<result column="nums" property="nums"/>
+		<result column="kid" property="kid"/>
+		<result column="status" property="status"/>
+	</resultMap>
+	<select id="selectOne" parameterType="Integer" resultType="House">
+		select * from house where id=#{0}
+	</select>
+	<select id="select" resultMap="houseResultMap">
+		select * from house
+	</select>
+	<insert id="insert" parameterType="House">
+		insert into house(nums,kid,status) values(#{nums},#{kid},#{status})
+	</insert>
+	<delete id="delete" parameterType="Integer">
+		delete from house where id=#{0}
+	</delete>
+	<update id="update" parameterType="House">
+		update house set nums=#{nums},kid=#{kid},status=#{status} where id=#{id}
+	</update>
+</mapper>
